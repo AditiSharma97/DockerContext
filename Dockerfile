@@ -35,11 +35,11 @@ RUN cd /nutch-release-2.3 && ant runtime
 
 RUN cd /nutch-release-2.3/runtime/local/conf && rm nutch-site.xml 
 RUN cd /nutch-release-2.3/runtime/local/conf && rm hbase-site.xml
-#RUN cd /nutch-release-2.3/runtime/local/bin && rm crawl
+RUN cd /nutch-release-2.3/runtime/local/bin && rm crawl
 
 ADD ./nutch/nutch-site.xml /nutch-release-2.3/runtime/local/conf
 ADD ./nutch/hbase-site.xml /nutch-release-2.3/runtime/local/conf
-#ADD ./nutch/crawl /nutch-release-2.3/runtime/local/bin
+ADD ./nutch/crawl /nutch-release-2.3/runtime/local/bin
 
 RUN cd /nutch-release-2.3 && mkdir seed
 RUN cd /nutch-release-2.3/seed && touch urls.txt
