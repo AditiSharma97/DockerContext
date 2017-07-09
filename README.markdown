@@ -29,15 +29,15 @@ How to use this image
 5. Enter the container for nutch+elasticsearch image
    
    Following are the directories inside the container root directory 
-   ## nutch-release-2.3
+   * nutch-release-2.3
 	runtime/local/conf contains file for configuration
 	runtime/local/bin/crawl shell script for crawl command: max number of urls to be crawled per cycle can be changed
 	seed directory contains urls.txt which has the seed urls to be crawled
-   ## hbase-data
+   * hbase-data
 	crawldb : can be cleared 
-   ## hbase-0.94.27
+   * hbase-0.94.27
 	conf directory contains configuration files
-   ## /etc/elasticsearch
+   * /etc/elasticsearch
 	contains configuration files
 
 6. Add the seed links for domains to be crawled by editing the urls.txt file in /nutch-release-2.3/seed 
