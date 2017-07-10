@@ -4,6 +4,17 @@ RUN apt-get -y upgrade
 RUN apt-get -y  install openjdk-8-jdk 
 RUN apt-get -y install ant 
 RUN apt-get -y install wget
+RUN apt-get -y install cron
+RUN cron &
+
+# Add crontab file in the cron directory
+ADD ./root /var/spool/cron/crontabs/root
+
+# Give execution rights on the cron job
+#RUN chmod 0644 /etc/cron.d/hello-cron
+
+# Create the log file to be able to run tail
+#RUN touch /var/log/cron.log
 
 RUN wget "https://archive.apache.org/dist/hbase/hbase-0.94.27/hbase-0.94.27.tar.gz"
 RUN tar xvzf hbase-0.94.27.tar.gz
@@ -45,8 +56,8 @@ RUN cd /nutch-release-2.3 && mkdir seed
 RUN cd /nutch-release-2.3/seed && touch urls.txt
 
 ENV JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64" 
-#RUN echo 'JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64' >> /etc/environment
-#RUN echo 'export JAVA_HOME' >> /etc/environment
+ENV TERM=vt100
+ADD ./environment /etc/environment
 
 EXPOSE 80 8000 8080 443 9200 8081 9300
 
@@ -55,7 +66,7 @@ EXPOSE 80 8000 8080 443 9200 8081 9300
 ADD ./run.sh /run.sh
 RUN chmod +x /run.sh
 
-CMD ["/run.sh"]
+CMD ["./run.sh"]
 
 
 

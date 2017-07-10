@@ -52,6 +52,18 @@ How to use this image
 	Where crawlid is any number and depth is the number of cycle
 	For whole domain to be crawled, use an unusually large number for depth
 
+Storage
+----
+
+crawldb: /hbase-data
+elasticsearch index: /var/lib/elasticsearch
+
+
+
+
+export TERM=vt100
+
+
 
 
 
